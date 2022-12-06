@@ -4,13 +4,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dummy</title>
+    <title>Dynamic list</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+   
 </head>
 <body>
+<div class="container">
+    <h1 class="head">Add Data</h1>
+    <div id="addNew">
+        <span id="addData">Add New Data</span>
+        <i class="fas fa-plus"></i>
+    </div>
 
-    <p id="para">hello</p>
-    <button id="btn">BUTTON</button>
+    <div class="sortSearch">
+
+        <select name="" id="sort">
+            <option value="">SORT BY NAME</option>
+            <option value="">A-Z</option>
+            <option value="">Z-A</option>
+        </select>
+        
+        <input type="search" name="" id="search" placeholder="Search by PAN number">
+       
+        </div>
+
+
+    <div class="dialogue-box">
+        <form id="person-data">
+            <label for="full-name">Full Name</label>
+            <input type="text" name="full-name" id="full-name" >
+            <label for="PAN">Enter your PAN number</label>
+            <input type="text" name="PAN" id="PAN" >
+            <label for="age">Enter your age</label>
+            <input type="text" name="age" id="age" >
+            <label for="education">Your highest qualification</label>
+            <input type="text" name="education" id="edu">
+            <button type="submit" id="submit">Submit</button>
+        </form>
+
+        <div class="alert-message"></div>
+    </div>
+
+
+
+    <h3 class="title" >List Of The Applicant</h3>
+
+
+
+
+    
+
+    <div id="ListToAdd">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Pan Number</th>
+                <th>Age</th>
+                <th>Qualification</th>
+                <th>Action</th>
+            </tr>
+            <tbody id="tablebody">
+                 <!-- ADDED LIST TO BE ADDED HERE -->
+            </tbody>
+    
+    
+        </table>
+    </div>
+
+    
+</div>
+  
    <script src="app.js"></script> 
+   
 </body>
 </html>
+
+
+
+
+
+
