@@ -4,27 +4,44 @@ const dataApplicant = document.querySelector(".dataApplicant")
 const fullName = document.querySelector("#full-name");
 const pan = document.querySelector("#PAN");
 const age = document.getElementById("age");
+const search = document.getElementById("search");
 const qualification = document.getElementById("edu");
 const form = document.getElementById("person-data");
 const submit = document.getElementById("submit");
 const tablebody = document.getElementById('tablebody');
+const sort = document.getElementById('sort');
 const del= document.querySelector('.delete')
 const edit= document.querySelector('.edit')
-
 const error = document.querySelector(".alert-message");
+const sortBtn = document.querySelector(".sortBtn");
+const msg = document.querySelector(".msg");
+
+
+
+let editName,editAge,editQualification,editPan;
+
 
 let count = 0;
-// let masterDetails = [];
 
-let masterDetails = JSON.parse(localStorage.getItem('applicantsDetails'));
- if(!masterDetails){
-   masterDetails = [];
+
+let masterArray = JSON.parse(localStorage.getItem('applicantsDetails'));
+ if(!masterArray){
+   masterArray = [];
+ }else{
+   retrivedata();
  }
+// console.log(masterArray)
 
 
-masterDetails.map((obj)=>{
-   // createList(obj);
-})
+
+function retrivedata(){
+   masterArray.map((obj)=>{
+      createList(obj);
+      
+   })
+}
+
+
 
 
 
@@ -38,9 +55,11 @@ add.addEventListener('click', ()=>{
 
 
 form.addEventListener('submit',(e)=>{
-e.preventDefault();
-formValidation();
-createList(details)
+   e.preventDefault();
+  
+   formValidation();
+  
+   
 })
 
 
@@ -53,16 +72,19 @@ createList(details)
         setTimeout(()=>{
          error.innerText="";
        },1000)
-   }else{
-      error.innerText="";
-      acceptata();
-   }
+      }else{
+
+      
+         acceptata();
+         
+
+      }
 }
 
 
 
 
-const data = [];
+
 
 
 let acceptata = ()=>{
@@ -74,7 +96,7 @@ let acceptata = ()=>{
    // createList();
    // dialogue.style.display = "none"
 
-   const details = {
+   let details = {
       id : count++,
       Name : fullName.value,
       Pan : pan.value,
@@ -82,10 +104,11 @@ let acceptata = ()=>{
       Qualification : qualification.value
 
    };
-
-    masterDetails.push(details)
-    localStorage.setItem('applicantsDetails',JSON.stringify(masterDetails))
+   
     createList(details);
+    masterArray.push(details)
+    localStorage.setItem('applicantsDetails',JSON.stringify(masterArray))
+    
     dialogue.style.display = "none"
 
     resetForm()
@@ -94,8 +117,8 @@ let acceptata = ()=>{
 
 
 
-let createList = (details)=>{
-   const tableItems = document.createElement('tr');
+function createList(details){
+   let tableItems = document.createElement('tr');
    tableItems.setAttribute('id',details.id)
    tableItems.innerHTML+=
    `<tr>
@@ -103,55 +126,156 @@ let createList = (details)=>{
    <td>${details.Pan}</td>
    <td>${details.Age}</td>
    <td>${details.Qualification}</td>
-   <td><button class="delete btn">Delete</button><button class="edit btn">Edit</button></td>
+   <td><button class="delete btn">Delete</button>
+       <button class="edit btn">Edit</button>
+       </td>
     </tr>`
 
     tablebody.appendChild(tableItems)
 }
 
 
+
+
 tablebody.addEventListener('click',(e)=>{
    if(e.target.classList.contains('delete')){
       deletetableItems(e)
+
+
    }else if(e.target.classList.contains('edit')){
       edittableItems(e);
+
    }
+
 })
 
 
 
 function deletetableItems(e){
-   masterDetails.forEach((ele,idx) => {
+   masterArray.forEach((ele,idx) => {
       if(ele.id == parseInt(e.path[2].id)){
-         masterDetails.splice(idx,1)
+         masterArray.splice(idx,1)
       }
    });
    e.path[2].remove(); 
-   console.log(e)
+   // console.log(e)
+
+   localStorage.setItem('applicantsDetails',JSON.stringify(masterArray))
 }
 
 
 
 
 function edittableItems(e){
-    editName = e.path[2].firstElementChild;
-    editPan = editName.nextElementSibling;
-    editAge = editPan.nextElementSibling;
-    editQualification = editAge.nextElementSibling;
+   editName = e.path[2].firstElementChild;
+   editPan = editName.nextElementSibling;
+   editAge = editPan.nextElementSibling;
+   editQualification = editAge.nextElementSibling;
    //  console.log(editage)
-  
-
+   
+   
    fullName.value = editName.innerText;
    pan.value = editPan.innerText;
    age.value = editAge.innerText;
    qualification.value = editQualification.innerText;
    
-
-   submit.innerText = "Save"
    
+   submit.innerText = "Save"
    dialogue.style.display = "block"
-   // console.log(e)
+   deletetableItems(e)
+
 }
+
+
+
+// function editAndSave(e,Name,Age,Pan,Qualification){
+//    e.preventDefault();
+//    masterArray.map((val)=>{
+//       if(val.id == e.target.id){
+
+//       }
+//    })
+
+// }
+// sort ////////////////////
+
+
+
+
+
+
+
+sort.addEventListener('change',(e)=>{
+ if(e.target.value=="inc"){
+   tablebody.innerHTML = "";
+  masterArray.sort(function(a,b){
+         if(a.Name.toLowerCase() < b.Name.toLowerCase()){
+            return -1;
+         }
+         if(a.Name.toLowerCase() > b.Name.toLowerCase()){
+            return 1;
+         }
+         return 0;
+      });
+
+      retrivedata();
+// console.log('yes')
+ }
+
+ if(e.target.value=="dec"){
+   tablebody.innerHTML = "";
+   masterArray.sort(function(a,b){
+          if(a.Name.toLowerCase() < b.Name.toLowerCase()){
+             return 1;
+          }
+          if(a.Name.toLowerCase() > b.Name.toLowerCase()){
+             return -1;
+          }
+          return 0;
+       });
+       retrivedata()
+       //  console.log("no")
+  }
+
+ 
+}) 
+
+
+search.addEventListener('input',()=>{
+   searchPan()
+})
+
+function searchPan(e){
+   tablebody.innerHTML = "";
+
+   let searchValue = search.value;
+   console.log(searchValue)
+ 
+   
+   let result = masterArray.filter((val)=>{
+      if(val.Pan.includes(searchValue)){
+         return val;
+      }
+   })
+  if(result.length!=0){
+   result.map((val)=>{
+      createList(val)
+   })
+  }else{
+   let val = msg.innerHTML="No Data Found !!!"
+   setTimeout(()=>{
+      msg.innerHTML="";
+    },1000)
+  }
+}
+   
+
+
+
+
+
+
+
 function resetForm(){
    fullName.value="";
    pan.value="";
