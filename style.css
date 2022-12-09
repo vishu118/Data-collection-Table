@@ -1,67 +1,59 @@
-
-body{
-    
-    background-color: #e5e5e5;
+body {
+  background-color: #e5e5e5;
 }
 
-
-
-.container{
-    font-family: monospace;
-    width: 10px;
-    width: 80%;
-    border: 5px solid #abcea1;
-    border-radius: 8px;
-    padding: 15px;
-    background-color: #fff;
-    margin: 10px;
-    text-align: center;
-    margin: 5% auto;
+.container {
+  font-family: monospace;
+  width: 10px;
+  width: 80%;
+  border: 5px solid #abcea1;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #fff;
+  margin: 10px;
+  text-align: center;
+  margin: 5% auto;
 }
 
-.head{
-    font-size: 2.5rem;
+.head {
+  font-size: 2.5rem;
 }
 
-.title{
-    font-size:2rem;
-    background-color: #abcea1;
-    padding: 10px;
+.title {
+  font-size: 2rem;
+  background-color: #abcea1;
+  padding: 10px;
 }
 
-#addNew{
-    
-display: flex;
-background-color: #d1f3c8;
-align-items: center;
-justify-content: space-between;
-padding: 10px 40px;
-border-radius: 5px;
-cursor: pointer;
+#addNew {
+  display: flex;
+  background-color: #d1f3c8;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-
-
-.fa-plus{
-    background-color: #abcea1;
-    padding: 10px;
-    font-size: larger;
-    border-radius: 5px;
+.fa-plus {
+  background-color: #abcea1;
+  padding: 10px;
+  font-size: larger;
+  border-radius: 5px;
 }
 
-#addData{
-    font-family: monospace;
-    font-size: 2rem;
-    font-weight: bold;
+#addData {
+  font-family: monospace;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
+#sort {
+  font-size: 1rem;
+  background-color: #d1f3c8;
+  text-align: center;
 
-#sort{
-    font-size: 1rem;
-    background-color: #d1f3c8;
-    text-align: center;
-    
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 /* .search{
@@ -71,123 +63,131 @@ cursor: pointer;
     border: solid #abcea1; 
 } */
 
-.dialogue-box{
-    max-width: 800px;
-    min-width: 30vw;
-    margin: auto;
-    padding: 1rem;
-    position: absolute ;
-    top: 25%;
-    left: 35%;
+.dialogue-box {
+  max-width: 800px;
+  min-width: 30vw;
+  margin: auto;
+  padding: 1rem;
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  background-color: #abcea1;
+  display: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.dialogue-box form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.dialogue-box input {
+  font-size: 15px;
+  background-color: #edf3ec;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+#submit {
+  background-color: #d1f3c8;
+  margin: 10px;
+}
+
+.alert-message {
+  color: red;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  font-size: large;
+}
+
+table,
+th,
+td {
+  border: 1px solid;
+  border-radius: 8px;
+}
+#ListToAdd table {
+  width: 100%;
+  margin-top: 5%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: x-large;
+  background-color: #d1f3c8;
+}
+
+tr {
+  height: 4rem;
+}
+
+.sortSearch input {
+  margin-top: 20px;
+  background-color: #d1f3c8;
+  border: solid #abcea1;
+
+  font-weight: bold;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.btn {
+  background-color: #565555;
+  color: white;
+  border: none;
+  padding: 7px;
+  width: 40%;
+}
+.btn:hover {
+  background-color: #a9aca8;
+}
+.msg {
+  color: red;
+  font-size: 30px;
+  align-self: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 400px) {
+  .dialogue-box {
+    top: 30%;
+    left: 20%;
+  }
+
+  .container {
+    width: 100%;
+    margin: 0 auto;
+    /* font-size: 1px; */
+  }
+
+  body {
+    font-size: 1px;
+  }
+
+  .ListToAdd {
+    width: 10%;
+    padding: 30px;
+  }
+
+  table td th tr {
+    margin-right: 20px;
+  }
+
+  .btn {
+    background-color: #f1efef;
+    color: rgb(27, 24, 24);
+    padding: none;
+    width: auto;
+    border: 1px solid #565555;
+  }
+
+  .btn:hover {
     background-color: #abcea1;
-    display: none;
-    border-radius: 8px;
-    font-size: 15px;
-    font-weight: bold;
-
-    
+  }
 }
-
-
-.dialogue-box form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-}
-
-.dialogue-box input{
-    font-size: 15px;
-    background-color: #edf3ec;
-    padding: 5px;
-    margin-bottom: 10px;
-    margin-top: 5px;
-    border-radius: 5px;
-}
-
-
-
-#submit{
-    background-color: #d1f3c8;
-    margin: 10px;
-}
-
-.alert-message{
-    color: red;
-    text-align: center;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: large;
-}
-
-
-
- table ,th ,td{
-    border: 1px solid;
-    border-radius: 8px;
-    
-    }
-    #ListToAdd table{
-        width: 100%;
-        margin-top: 5%;
-        border-collapse: collapse;
-        text-align: center;
-        font-size: x-large;
-        background-color:#d1f3c8 ;
-
-    
-    }
-    
-
-
-     tr{
-        height: 4rem;
-    }
-    
-    .sortSearch input{
-        margin-top: 20px;
-        background-color:  #d1f3c8;
-        border: solid #abcea1;
-
-        font-weight: bold;
-        text-align: center;
-        font-size: 1rem;
-        
-    }
-
-    .msg{
-        
-        color: red;
-        font-size: 30px;
-        align-self: center;
-        justify-content: center;
-        margin-top: 20px;
-    }
-    
-
-    @media  screen and (max-width:400px){
-        .dialogue-box{
-            top: 30%;
-            left: 20%;
-        }
-
-        .container{
-            width: 100%;
-            margin: 0 auto;
-            /* font-size: 1px; */
-        }
-
-        body{
-            font-size: 1px;
-        }
-
-        .ListToAdd{
-            width: 10%;
-            padding: 30px;
-            
-        }
-
-        table td th tr{
-            margin-right: 20px;
-        }
-    }
