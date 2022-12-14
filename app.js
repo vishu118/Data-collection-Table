@@ -124,9 +124,9 @@ function createList(details) {
 
 tablebody.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete")) {
-    deletetableItems(e);
+     deletetableItems(e);
   } else if (e.target.classList.contains("edit")) {
-    edittableItems(e);
+     edittableItems(e);
   }
 });
 
